@@ -1,0 +1,409 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CareerBridge - 5-Member Team Work Allocation Matrix</title>
+  <style>
+    @page {
+      size: A4 portrait;
+      margin: 1in;
+    }
+    *, *::before, *::after {
+      box-sizing: border-box;
+    }
+    body {
+      font-family: 'Times New Roman', Times, serif;
+      font-size: 11pt;
+      line-height: 1.45;
+      color: #111827;
+      background-color: #f9fafb;
+      margin: 0;
+      padding: 24px;
+    }
+    .container {
+      max-width: 860px;
+      margin: 0 auto;
+      background: #ffffff;
+      padding: 48px;
+      border: 1px solid #e5e7eb;
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+    }
+    .print-bar {
+      position: sticky;
+      top: 12px;
+      max-width: 860px;
+      margin: 0 auto 16px auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: #1e293b;
+      color: #ffffff;
+      padding: 12px 20px;
+      border-radius: 8px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      font-size: 14px;
+      z-index: 999;
+    }
+    .print-btn {
+      background: #3b82f6;
+      color: #ffffff;
+      border: none;
+      padding: 8px 16px;
+      border-radius: 6px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: background 0.2s;
+    }
+    .print-btn:hover {
+      background: #2563eb;
+    }
+    h1 {
+      font-size: 20pt;
+      font-weight: bold;
+      text-align: center;
+      margin-top: 0;
+      margin-bottom: 6px;
+      color: #0f172a;
+      text-transform: uppercase;
+    }
+    .sub-title {
+      text-align: center;
+      font-size: 13pt;
+      font-style: italic;
+      color: #4b5563;
+      margin-bottom: 24px;
+    }
+    .badge {
+      display: inline-block;
+      padding: 2px 8px;
+      font-size: 10pt;
+      font-weight: bold;
+      border-radius: 4px;
+      background: #eff6ff;
+      color: #1d4ed8;
+      border: 1px solid #bfdbfe;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 16px 0 24px 0;
+      font-size: 10.5pt;
+    }
+    table, th, td {
+      border: 1px solid #d1d5db;
+    }
+    th {
+      background-color: #f3f4f6;
+      font-weight: bold;
+      padding: 8px 10px;
+      text-align: left;
+    }
+    td {
+      padding: 8px 10px;
+      vertical-align: top;
+    }
+    .member-card {
+      border: 1px solid #e2e8f0;
+      border-radius: 6px;
+      padding: 20px;
+      margin-bottom: 24px;
+      page-break-inside: avoid;
+      background: #ffffff;
+    }
+    .member-card.m1 { border-left: 6px solid #2563eb; }
+    .member-card.m2 { border-left: 6px solid #10b981; }
+    .member-card.m3 { border-left: 6px solid #8b5cf6; }
+    .member-card.m4 { border-left: 6px solid #f59e0b; }
+    .member-card.m5 { border-left: 6px solid #ec4899; }
+    .member-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      border-bottom: 1px solid #e2e8f0;
+      padding-bottom: 8px;
+      margin-bottom: 12px;
+    }
+    .member-name {
+      font-size: 15pt;
+      font-weight: bold;
+      color: #0f172a;
+    }
+    .member-role {
+      font-size: 11pt;
+      font-weight: bold;
+      color: #4b5563;
+    }
+    ul {
+      margin: 6px 0 12px 20px;
+      padding: 0;
+    }
+    li {
+      margin-bottom: 4px;
+    }
+    .files-box {
+      background: #f8fafc;
+      border: 1px solid #e2e8f0;
+      padding: 8px 12px;
+      border-radius: 4px;
+      font-family: "Courier New", Courier, monospace;
+      font-size: 9.5pt;
+      margin-bottom: 12px;
+    }
+    .viva-box {
+      background: #fffbeb;
+      border-left: 4px solid #f59e0b;
+      padding: 10px 14px;
+      border-radius: 0 4px 4px 0;
+      margin-top: 10px;
+    }
+    .viva-title {
+      font-weight: bold;
+      color: #92400e;
+      margin-bottom: 4px;
+      font-size: 10.5pt;
+    }
+    @media print {
+      body {
+        background: #ffffff;
+        padding: 0;
+      }
+      .print-bar {
+        display: none !important;
+      }
+      .container {
+        border: none;
+        box-shadow: none;
+        padding: 0;
+        max-width: 100%;
+      }
+      .member-card {
+        page-break-inside: avoid;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="print-bar">
+    <div><strong>CareerBridge:</strong> 5-Member Academic Task Allocation Matrix</div>
+    <button class="print-btn" onclick="window.print()">Print / Save as PDF</button>
+  </div>
+
+  <div class="container">
+    <h1>CodeForge BuildX 2026 – Team Work Allocation</h1>
+    <div class="sub-title">Project: CareerBridge – AI-Powered Career Readiness & Placement Platform</div>
+
+    <p style="text-align: justify;">
+      This document formalizes the division of responsibilities, codebase ownership, and technical contributions for each of the <strong>5 team members</strong> participating in the evaluation of <em>CareerBridge</em>. Each member is assigned a specialized engineering domain and is accountable for specific architectural components and viva examination topics.
+    </p>
+
+    <!-- Overview Table -->
+    <table>
+      <thead>
+        <tr>
+          <th style="width: 12%;">Member</th>
+          <th style="width: 25%;">Role Designation</th>
+          <th style="width: 25%;">Primary Domain</th>
+          <th style="width: 38%;">Core Modules & Deliverables Owned</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>Member 1</strong></td>
+          <td>Team Lead & Frontend Architect</td>
+          <td>UI/UX, Layout, Auth State</td>
+          <td><code>AppLayout</code>, <code>Navbar</code>, <code>Sidebar</code>, <code>AuthContext</code>, <code>Landing</code>, <code>Login</code>, <code>Register</code></td>
+        </tr>
+        <tr>
+          <td><strong>Member 2</strong></td>
+          <td>Backend & Security Engineer</td>
+          <td>Flask REST API, JWT, RBAC</td>
+          <td>App Factory (<code>__init__.py</code>), <code>auth.py</code>, <code>student.py</code>, <code>admin.py</code>, <code>decorators.py</code></td>
+        </tr>
+        <tr>
+          <td><strong>Member 3</strong></td>
+          <td>AI/ML & NLP Engineer</td>
+          <td>Resume Parsing, TF-IDF Matching</td>
+          <td><code>resume_parser.py</code>, <code>job_matcher.py</code>, <code>skill_analyzer.py</code>, <code>course_recommender.py</code>, <code>ai.py</code></td>
+        </tr>
+        <tr>
+          <td><strong>Member 4</strong></td>
+          <td>Database Architect & Workflow Lead</td>
+          <td>SQLAlchemy ORM, Job Portal</td>
+          <td>Models (<code>User</code>, <code>Job</code>, <code>Application</code>), <code>seed_data.py</code>, <code>jobs.py</code>, <code>Jobs.jsx</code>, <code>Applications.jsx</code></td>
+        </tr>
+        <tr>
+          <td><strong>Member 5</strong></td>
+          <td>QA, Testing & Documentation Lead</td>
+          <td>End-to-End Testing, Dashboard</td>
+          <td><code>Dashboard.jsx</code>, <code>Profile.jsx</code>, <code>api.js</code>, 14-Page BuildX PDF, Test Matrix</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <!-- Member 1 -->
+    <div class="member-card m1">
+      <div class="member-header">
+        <span class="member-name">Member 1: Team Lead & Frontend Architect</span>
+        <span class="badge">UI / UX & Client Architecture</span>
+      </div>
+      <div class="files-box">
+        <strong>Files Owned:</strong> frontend/src/App.jsx, context/AuthContext.jsx, components/layout/AppLayout.jsx, components/layout/Navbar.jsx, components/layout/Sidebar.jsx, pages/Landing.jsx, pages/Login.jsx, pages/Register.jsx, index.css
+      </div>
+      <strong>Assigned Responsibilities & Tasks Completed:</strong>
+      <ul>
+        <li>Configured React 19 single-page app with Vite and Tailwind CSS design tokens.</li>
+        <li>Implemented global authentication state via <code>AuthContext.jsx</code> with token persistence in <code>localStorage</code>.</li>
+        <li>Built the responsive application layout (collapsible mobile sidebar, user session indicators, top navigation bar).</li>
+        <li>Constructed user entry pages (Landing, Login, Register) with live validation and error notifications.</li>
+        <li>Coordinated sprint releases, task allocation, code merges, and team syncs.</li>
+      </ul>
+      <div class="viva-box">
+        <div class="viva-title">Key Viva Question:</div>
+        <em>How does AuthContext ensure state persistence and route security?</em><br>
+        On initial load, <code>useEffect</code> checks <code>localStorage</code> for a valid JWT token. If present, it attaches it to Axios headers and sets the user state. Route guards intercept unauthenticated transitions and redirect users to <code>/login</code>.
+      </div>
+    </div>
+
+    <!-- Member 2 -->
+    <div class="member-card m2">
+      <div class="member-header">
+        <span class="member-name">Member 2: Backend RESTful API & Security Engineer</span>
+        <span class="badge">Backend API & Security</span>
+      </div>
+      <div class="files-box">
+        <strong>Files Owned:</strong> backend/app/__init__.py, config.py, extensions.py, run.py, routes/auth.py, routes/student.py, routes/admin.py, utils/decorators.py
+      </div>
+      <strong>Assigned Responsibilities & Tasks Completed:</strong>
+      <ul>
+        <li>Engineered Flask Application Factory pattern (<code>create_app</code>) and modular blueprint routing.</li>
+        <li>Built JWT authentication pipeline (token issuance, signature verification, expiration claims).</li>
+        <li>Authored custom security decorators (<code>@jwt_required</code>, <code>@admin_required</code>) for RBAC enforcement.</li>
+        <li>Developed student profile REST endpoints (<code>GET/PUT /api/student/profile</code>) with input sanitization.</li>
+        <li>Constructed Admin API endpoints for placement faculty to monitor college-wide analytics.</li>
+      </ul>
+      <div class="viva-box">
+        <div class="viva-title">Key Viva Question:</div>
+        <em>How are passwords stored and how does the backend verify API requests?</em><br>
+        Passwords are salted and hashed using PBKDF2/SHA256 via <code>werkzeug.security</code>. Protected routes inspect the <code>Authorization: Bearer &lt;token&gt;</code> header using <code>@jwt_required</code> and abort with 401 if invalid.
+      </div>
+    </div>
+
+    <!-- Member 3 -->
+    <div class="member-card m3">
+      <div class="member-header">
+        <span class="member-name">Member 3: AI/ML & Natural Language Processing Engineer</span>
+        <span class="badge">Machine Learning & NLP</span>
+      </div>
+      <div class="files-box">
+        <strong>Files Owned:</strong> backend/app/services/resume_parser.py, services/job_matcher.py, services/skill_analyzer.py, services/course_recommender.py, routes/ai.py, frontend/src/pages/SkillAnalysis.jsx
+      </div>
+      <strong>Assigned Responsibilities & Tasks Completed:</strong>
+      <ul>
+        <li>Implemented text stream extraction from uploaded PDF resumes using <code>pdfplumber</code>.</li>
+        <li>Constructed a canonical technical skill taxonomy and regex extractor for skill identification.</li>
+        <li>Programmed the TF-IDF Vectorizer and Cosine Similarity algorithm for job-to-resume matching.</li>
+        <li>Engineered the Placement Readiness Score algorithm combining profile, skills, and match indices.</li>
+        <li>Built the course recommendation service to automatically bridge detected skill gaps.</li>
+      </ul>
+      <div class="viva-box">
+        <div class="viva-title">Key Viva Question:</div>
+        <em>What is the mathematical formulation of Cosine Similarity and why is it used?</em><br>
+        $$\text{Cosine Similarity}(u, v) = \frac{\mathbf{u} \cdot \mathbf{v}}{\|\mathbf{u}\|_2 \|\mathbf{v}\|_2}$$
+        It measures the cosine of the angle between two multi-dimensional TF-IDF vectors, making matching invariant to document length so brief resumes aren't penalized.
+      </div>
+    </div>
+
+    <!-- Member 4 -->
+    <div class="member-card m4">
+      <div class="member-header">
+        <span class="member-name">Member 4: Database Architect & Workflow Lead</span>
+        <span class="badge">Database ORM & Job Workflows</span>
+      </div>
+      <div class="files-box">
+        <strong>Files Owned:</strong> backend/app/models/user.py, student_profile.py, job.py, application.py, course.py, skill.py, seed_data.py, routes/jobs.py, frontend/src/pages/Jobs.jsx, Applications.jsx
+      </div>
+      <strong>Assigned Responsibilities & Tasks Completed:</strong>
+      <ul>
+        <li>Designed relational database schema with 6 interconnected models using SQLAlchemy ORM.</li>
+        <li>Enforced foreign keys, unique constraints (preventing duplicate applications), and cascading deletions.</li>
+        <li>Created production-ready database seeder (<code>seed_data.py</code>) populated with 12+ real-world jobs.</li>
+        <li>Implemented Job Portal REST endpoints (filter by domain, salary, keyword search).</li>
+        <li>Developed student application lifecycle (Applied -> Review -> Shortlisted) and UI tracking cards.</li>
+      </ul>
+      <div class="viva-box">
+        <div class="viva-title">Key Viva Question:</div>
+        <em>Explain the database schema relationship between User, StudentProfile, and Application.</em><br>
+        <code>User</code> has a 1-to-1 relationship with <code>StudentProfile</code>. <code>StudentProfile</code> and <code>Job</code> share a Many-to-Many relationship linked via the <code>Application</code> association model with status tracking.
+      </div>
+    </div>
+
+    <!-- Member 5 -->
+    <div class="member-card m5">
+      <div class="member-header">
+        <span class="member-name">Member 5: QA, Testing & Documentation Lead</span>
+        <span class="badge">QA, Dashboard & BuildX Documentation</span>
+      </div>
+      <div class="files-box">
+        <strong>Files Owned:</strong> frontend/src/pages/Dashboard.jsx, Profile.jsx, services/api.js, CareerBridge_BuildX_Documentation.pdf, buildx-documentation.html, CareerBridge_Complete_Study_Guide.pdf
+      </div>
+      <strong>Assigned Responsibilities & Tasks Completed:</strong>
+      <ul>
+        <li>Developed the interactive Student Dashboard (Readiness score gauge, active applications, alerts).</li>
+        <li>Created the Profile management page with drag-and-drop resume upload and instant skill tag preview.</li>
+        <li>Executed comprehensive testing matrix (authentication tests, PDF parsing validation, boundary checks).</li>
+        <li>Diagnosed and patched critical bugs (React child object render error during resume skill extraction).</li>
+        <li>Authored official 14-page CodeForge BuildX Documentation strictly conforming to formatting rules.</li>
+      </ul>
+      <div class="viva-box">
+        <div class="viva-title">Key Viva Question:</div>
+        <em>What was the root cause of the React resume upload blank screen bug and how did you resolve it?</em><br>
+        The backend returned extracted skills as objects <code>[{ name, category }]</code>. <code>Profile.jsx</code> attempted to render <code>{skill}</code> directly in JSX rather than <code>{skill.name}</code>, causing a React child unhandled exception.
+      </div>
+    </div>
+
+    <!-- Presentation Flow Section -->
+    <h3 style="border-bottom: 2px solid #0f172a; padding-bottom: 4px; margin-top: 36px;">Recommended 5-Minute Team Viva Presentation Flow</h3>
+    <table style="font-size: 10pt;">
+      <thead>
+        <tr>
+          <th style="width: 15%;">Time</th>
+          <th style="width: 20%;">Speaker</th>
+          <th style="width: 65%;">Demo Action & Explanation</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>0:00 – 1:00</strong></td>
+          <td><strong>Member 1</strong> (Lead)</td>
+          <td>Introduces problem statement, target audience, and presents the Landing Page, Login, and Registration flow.</td>
+        </tr>
+        <tr>
+          <td><strong>1:00 – 2:00</strong></td>
+          <td><strong>Member 5</strong> (QA/Dash)</td>
+          <td>Demonstrates the Student Dashboard, readiness ring, and uploads a sample PDF resume on the Profile page.</td>
+        </tr>
+        <tr>
+          <td><strong>2:00 – 3:00</strong></td>
+          <td><strong>Member 3</strong> (AI/ML)</td>
+          <td>Highlights the parsed skills, explains the TF-IDF and Cosine Similarity math, and reviews the Skill Gap analysis.</td>
+        </tr>
+        <tr>
+          <td><strong>3:00 – 4:00</strong></td>
+          <td><strong>Member 4</strong> (Database)</td>
+          <td>Demonstrates job filtering, applies for a job, tracks it in Applications, and explains the relational ER schema.</td>
+        </tr>
+        <tr>
+          <td><strong>4:00 – 5:00</strong></td>
+          <td><strong>Member 2</strong> (Backend)</td>
+          <td>Shows the Admin placement coordinator dashboard, explains JWT security decorators, and summarizes project conclusions.</td>
+        </tr>
+      </tbody>
+    </table>
+
+  </div>
+
+</body>
+</html>

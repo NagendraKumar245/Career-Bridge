@@ -1,0 +1,497 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CareerBridge – Complete Technical Study Guide & Architecture Manual</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #0b0f19;
+      --card-bg: #111827;
+      --border: #1f2937;
+      --primary: #6366f1;
+      --primary-light: #818cf8;
+      --primary-glow: rgba(99, 102, 241, 0.2);
+      --secondary: #22c55e;
+      --amber: #f59e0b;
+      --text: #f3f4f6;
+      --text-muted: #9ca3af;
+      --code-bg: #030712;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Inter', -apple-system, sans-serif;
+      background-color: var(--bg);
+      color: var(--text);
+      line-height: 1.65;
+      padding: 40px 20px;
+    }
+
+    .container {
+      max-width: 900px;
+      margin: 0 auto;
+    }
+
+    /* Print Controls */
+    .controls {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      padding: 16px 24px;
+      border-radius: 16px;
+      margin-bottom: 32px;
+      position: sticky;
+      top: 20px;
+      z-index: 100;
+      backdrop-filter: blur(16px);
+      box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.5);
+    }
+
+    .btn {
+      background: linear-gradient(135deg, #4f46e5, #6366f1);
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      font-weight: 600;
+      border-radius: 10px;
+      cursor: pointer;
+      font-size: 14px;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      transition: all 0.2s;
+    }
+    .btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 15px var(--primary-glow);
+    }
+
+    /* Header Banner */
+    .hero {
+      background: linear-gradient(135deg, #1e1b4b, #0f172a);
+      border: 1px solid rgba(99, 102, 241, 0.3);
+      border-radius: 20px;
+      padding: 40px;
+      margin-bottom: 40px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .badge {
+      display: inline-block;
+      padding: 4px 12px;
+      background: rgba(99, 102, 241, 0.2);
+      border: 1px solid rgba(99, 102, 241, 0.4);
+      color: var(--primary-light);
+      border-radius: 9999px;
+      font-size: 12px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      margin-bottom: 12px;
+    }
+
+    h1 {
+      font-size: 32px;
+      font-weight: 900;
+      letter-spacing: -0.02em;
+      margin-bottom: 8px;
+      color: #fff;
+    }
+
+    .subtitle {
+      font-size: 16px;
+      color: var(--text-muted);
+      max-width: 700px;
+    }
+
+    /* Chapters & Sections */
+    .chapter {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 32px;
+      margin-bottom: 32px;
+    }
+
+    .chapter-header {
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 16px;
+      margin-bottom: 24px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .chapter-number {
+      background: var(--primary);
+      color: white;
+      font-weight: 800;
+      font-size: 14px;
+      width: 32px;
+      height: 32px;
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    h2 {
+      font-size: 22px;
+      font-weight: 800;
+      color: #fff;
+    }
+
+    h3 {
+      font-size: 16px;
+      font-weight: 700;
+      color: var(--primary-light);
+      margin: 20px 0 10px;
+    }
+
+    p {
+      color: #d1d5db;
+      font-size: 15px;
+      margin-bottom: 14px;
+    }
+
+    ul, ol {
+      margin: 12px 0 20px 24px;
+      color: #d1d5db;
+      font-size: 14.5px;
+    }
+
+    li {
+      margin-bottom: 8px;
+    }
+
+    strong {
+      color: #fff;
+    }
+
+    /* Tables */
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 20px 0;
+      font-size: 13.5px;
+    }
+
+    th {
+      background: #1e293b;
+      color: #fff;
+      text-align: left;
+      padding: 12px;
+      border-bottom: 2px solid #334155;
+    }
+
+    td {
+      padding: 10px 12px;
+      border-bottom: 1px solid #1f2937;
+      color: #cbd5e1;
+    }
+
+    tr:nth-child(even) td {
+      background: rgba(255, 255, 255, 0.02);
+    }
+
+    /* Callout & Formula */
+    .callout {
+      background: rgba(99, 102, 241, 0.08);
+      border-left: 4px solid var(--primary);
+      padding: 16px 20px;
+      border-radius: 8px;
+      margin: 20px 0;
+    }
+
+    .formula-box {
+      background: #030712;
+      border: 1px solid #374151;
+      padding: 16px 20px;
+      border-radius: 12px;
+      margin: 16px 0;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 14px;
+      color: #38bdf8;
+    }
+
+    pre code {
+      display: block;
+      background: var(--code-bg);
+      border: 1px solid #1f2937;
+      padding: 16px;
+      border-radius: 10px;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 13px;
+      color: #e2e8f0;
+      overflow-x: auto;
+      margin: 16px 0;
+    }
+
+    /* QA Cards */
+    .qa-card {
+      background: #0f172a;
+      border: 1px solid #1e293b;
+      border-radius: 12px;
+      padding: 18px 22px;
+      margin-bottom: 16px;
+    }
+
+    .qa-question {
+      font-size: 15px;
+      font-weight: 700;
+      color: #818cf8;
+      margin-bottom: 8px;
+      display: flex;
+      gap: 8px;
+    }
+
+    .qa-answer {
+      font-size: 14px;
+      color: #cbd5e1;
+      line-height: 1.6;
+    }
+
+    /* Print Media Queries */
+    @media print {
+      body {
+        background: #fff;
+        color: #111;
+        padding: 0;
+      }
+      .controls {
+        display: none !important;
+      }
+      .hero {
+        background: #f8fafc;
+        border: 1px solid #cbd5e1;
+        page-break-after: always;
+      }
+      h1, h2, h3, strong {
+        color: #0f172a !important;
+      }
+      p, li, .qa-answer {
+        color: #334155 !important;
+      }
+      .chapter {
+        background: #fff;
+        border: 1px solid #e2e8f0;
+        page-break-inside: avoid;
+        margin-bottom: 24px;
+      }
+      th {
+        background: #f1f5f9;
+        color: #0f172a;
+      }
+      td {
+        border-bottom: 1px solid #e2e8f0;
+        color: #334155;
+      }
+      .formula-box, pre code {
+        background: #f8fafc;
+        border: 1px solid #cbd5e1;
+        color: #0f172a;
+      }
+      .qa-card {
+        background: #f8fafc;
+        border: 1px solid #e2e8f0;
+        page-break-inside: avoid;
+      }
+      .qa-question {
+        color: #4338ca;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <!-- Top Print Bar -->
+    <div class="controls">
+      <div>
+        <strong>CareerBridge Study Guide & Reference Manual</strong>
+        <p style="font-size: 12px; color: var(--text-muted); margin: 0;">Comprehensive full-stack architecture, algorithms, formulas & interview guide</p>
+      </div>
+      <button class="btn" onclick="window.print()">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9V2h12v7"></path><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"></path><path d="M6 14h12v8H6z"></path></svg>
+        Save / Print as PDF
+      </button>
+    </div>
+
+    <!-- Hero Header -->
+    <div class="hero">
+      <span class="badge">Technical Reference Manual & Viva Guide</span>
+      <h1>CareerBridge Platform</h1>
+      <p class="subtitle">AI-Powered Job Matching, Automated Resume Skill Parsing, Skill Gap Analysis & Learning Pathway Engine for Fresh Graduates.</p>
+      <div style="margin-top: 20px; font-size: 13px; color: #a5b4fc; display: flex; flex-wrap: wrap; gap: 16px;">
+        <span><strong>Frontend:</strong> React 18, Tailwind CSS v3, Chart.js</span>
+        <span>•</span>
+        <span><strong>Backend:</strong> Python Flask 3.1, JWT, SQLAlchemy</span>
+        <span>•</span>
+        <span><strong>AI/ML:</strong> Scikit-learn (TF-IDF + Cosine Sim)</span>
+      </div>
+    </div>
+
+    <!-- Chapter 1 -->
+    <div class="chapter">
+      <div class="chapter-header">
+        <div class="chapter-number">1</div>
+        <h2>Problem Statement & System Overview</h2>
+      </div>
+      <p>Traditional job platforms are optimized for experienced hires. Fresh college graduates face distinct systemic challenges in the modern tech hiring landscape:</p>
+      <ul>
+        <li><strong>Experience Barrier:</strong> Entry-level filters often require 2–3 years of experience.</li>
+        <li><strong>ATS Keyword Filtering:</strong> Applicant Tracking Systems eliminate resumes based on strict verbatim keyword matches, ignoring conceptual equivalence.</li>
+        <li><strong>Zero Feedback Loop:</strong> Rejected applicants receive generic automated emails with no actionable guidance on which skills they lacked.</li>
+        <li><strong>Unstructured Upskilling:</strong> Students must manually search multiple platforms to find relevant courses to close their skill deficits.</li>
+      </ul>
+      <div class="callout">
+        <strong>The CareerBridge Solution:</strong> CareerBridge replaces keyword filtering with an AI-driven hybrid matching engine, layout-aware PDF resume parsing, automated skill gap calculation, and targeted course recommendations.
+      </div>
+    </div>
+
+    <!-- Chapter 2 -->
+    <div class="chapter">
+      <div class="chapter-header">
+        <div class="chapter-number">2</div>
+        <h2>Full-Stack System Architecture</h2>
+      </div>
+      <p>The platform follows a decoupled client-server architecture communicating over JSON REST APIs with stateless JWT token authorization.</p>
+      <table>
+        <thead>
+          <tr>
+            <th>Layer</th>
+            <th>Technology</th>
+            <th>Responsibilities</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>Frontend SPA</strong></td>
+            <td>React 18 + Tailwind CSS v3</td>
+            <td>Single Page Application, reactive state, glassmorphic UI, Charts</td>
+          </tr>
+          <tr>
+            <td><strong>API Gateway / Proxy</strong></td>
+            <td>Vite Proxy (Port 5173)</td>
+            <td>Forwards /api/* requests to Flask on port 5000</td>
+          </tr>
+          <tr>
+            <td><strong>Application Backend</strong></td>
+            <td>Flask 3.1 + Blueprints</td>
+            <td>REST API endpoints, business logic, authorization decorators</td>
+          </tr>
+          <tr>
+            <td><strong>AI / Machine Learning</strong></td>
+            <td>Scikit-learn + NumPy</td>
+            <td>TF-IDF vectorization, Cosine Similarity, Skill Gap Aggregation</td>
+          </tr>
+          <tr>
+            <td><strong>Document Parsing</strong></td>
+            <td>pdfplumber + Regex</td>
+            <td>PDF text layout extraction, taxonomy matching across 88+ skills</td>
+          </tr>
+          <tr>
+            <td><strong>Database / ORM</strong></td>
+            <td>SQLite / MySQL + SQLAlchemy</td>
+            <td>Normalized relational schema, cascade delete-orphans</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- Chapter 3 -->
+    <div class="chapter">
+      <div class="chapter-header">
+        <div class="chapter-number">3</div>
+        <h2>AI/ML Recommendation Engine: Mathematical Deep Dive</h2>
+      </div>
+      <p>CareerBridge uses a <strong>hybrid matching algorithm</strong> combining Natural Language Processing with discrete skill overlap.</p>
+
+      <h3>1. TF-IDF (Term Frequency-Inverse Document Frequency)</h3>
+      <p>Evaluates the importance of technical skills relative to the entire job corpus:</p>
+      <div class="formula-box">
+        TF(t, d) = 1 + ln(count(t, d))<br>
+        IDF(t, D) = ln((1 + |D|) / (1 + df(t))) + 1<br>
+        TF-IDF(t, d, D) = TF(t, d) × IDF(t, D)
+      </div>
+
+      <h3>2. Cosine Similarity</h3>
+      <p>Measures the cosine of the angle between student skill vectors and job requirements:</p>
+      <div class="formula-box">
+        cos(θ) = (u · v) / (||u|| × ||v||) = ∑(u_i × v_i) / [ √∑(u_i²) × √∑(v_i²) ]
+      </div>
+
+      <h3>3. Hybrid Recommendation Scoring</h3>
+      <div class="formula-box" style="color: #4ade80;">
+        Match_Score = [ 0.60 × Cosine_Similarity + 0.40 × (Matching_Skills / Required_Skills) ] × 100
+      </div>
+      <p>This hybrid approach prevents candidates from matching purely on generic text while ensuring essential prerequisite skills are satisfied.</p>
+    </div>
+
+    <!-- Chapter 4 -->
+    <div class="chapter">
+      <div class="chapter-header">
+        <div class="chapter-number">4</div>
+        <h2>Resume Parsing & Skill Taxonomy</h2>
+      </div>
+      <p>When a PDF resume is uploaded, <code>pdfplumber</code> extracts line-by-line text. The text is matched against an 88+ skill taxonomy using word-boundary regular expressions:</p>
+      <pre><code># Regex matching with word boundaries to prevent false positives
+pattern = r"\b" + re.escape(skill_name.lower()) + r"\b"
+if re.search(pattern, resume_text_lower):
+    extracted_skills.append({'name': skill_name, 'category': category})</code></pre>
+      <p>Extracted skills are automatically saved to the student profile, immediately recalculating job match scores.</p>
+    </div>
+
+    <!-- Chapter 5 -->
+    <div class="chapter">
+      <div class="chapter-header">
+        <div class="chapter-number">5</div>
+        <h2>Technical Viva & Interview Questions & Answers</h2>
+      </div>
+      <p>Common questions asked in engineering project vivas and software interviews regarding this platform:</p>
+
+      <div class="qa-card">
+        <div class="qa-question"><span>Q1:</span> How does the AI job matching algorithm work?</div>
+        <div class="qa-answer">It uses a hybrid algorithm: 60% TF-IDF Cosine Similarity (evaluating semantic alignment of student skill text and job descriptions with unigram/bigram tokens) and 40% Direct Skill Overlap (ensuring prerequisite skills are strictly present), producing a calibrated 0-100% score.</div>
+      </div>
+
+      <div class="qa-card">
+        <div class="qa-question"><span>Q2:</span> Why did you use TF-IDF rather than basic keyword search?</div>
+        <div class="qa-answer">Keyword search only counts occurrences. A candidate who repeats "Python" 20 times would be favored over someone mentioning "Python, Docker, AWS". TF-IDF penalizes common words and applies sublinear scaling (1 + ln(count)), preventing keyword stuffing while highlighting specialized skills.</div>
+      </div>
+
+      <div class="qa-card">
+        <div class="qa-question"><span>Q3:</span> How does JWT authentication work and how are routes protected?</div>
+        <div class="qa-answer">Flask-JWT-Extended issues an HMAC-SHA256 signed Bearer token containing user_id and role claims. React injects this into Axios requests. On the backend, @jwt_required() validates signatures, and a custom @admin_required decorator ensures only users with role === 'admin' can access sensitive admin endpoints.</div>
+      </div>
+
+      <div class="qa-card">
+        <div class="qa-question"><span>Q4:</span> How does the Skill Gap Analysis identify what skills to recommend?</div>
+        <div class="qa-answer">For individual jobs, it computes the set difference: Required_Job_Skills \ Candidate_Skills. Across the platform, it evaluates the top 10 recommended jobs for the student and uses collections.Counter to rank missing skills by market frequency, prioritizing skills that unlock the most jobs.</div>
+      </div>
+
+      <div class="qa-card">
+        <div class="qa-question"><span>Q5:</span> Explain the database relationship between Users, Profiles, and Skills.</div>
+        <div class="qa-answer">User has a 1-to-1 relationship with StudentProfile (user_id unique foreign key). StudentProfile has a Many-to-Many relationship with Skill implemented through the StudentSkill junction table, which also stores individual proficiency ratings (1-5).</div>
+      </div>
+    </div>
+
+    <div style="text-align: center; color: var(--text-muted); font-size: 13px; margin-top: 40px;">
+      CareerBridge Platform — Comprehensive Technical Study Guide & Reference Manual
+    </div>
+  </div>
+
+</body>
+</html>

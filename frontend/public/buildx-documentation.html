@@ -1,0 +1,716 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CodeForge BuildX 2026 – CareerBridge Project Documentation</title>
+  <style>
+    /* Strict adherence to CodeForge BuildX 2026 Guidelines */
+    @page {
+      size: A4 portrait;
+      margin: 1in; /* Margins: 1 inch on all sides */
+      @bottom-right {
+        content: "Page " counter(page);
+        font-family: "Times New Roman", Times, serif;
+        font-size: 10pt;
+      }
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: "Times New Roman", Times, serif; /* Font: Times New Roman */
+      font-size: 12pt; /* Body Text: 12 pt */
+      line-height: 1.5; /* Line Spacing: 1.5 */
+      color: #000000; /* Text Color: Black */
+      background-color: #ffffff; /* Background: Plain White */
+      text-align: justify; /* Text Alignment: Justified */
+      margin: 0;
+      padding: 0;
+    }
+
+    .page-container {
+      max-width: 8.27in; /* A4 width */
+      margin: 0 auto;
+      padding: 1in; /* 1 inch on all sides */
+      background: #ffffff;
+    }
+
+    /* Print toolbar (hidden when printing) */
+    .no-print-toolbar {
+      position: sticky;
+      top: 0;
+      background: #f1f5f9;
+      border-bottom: 2px solid #cbd5e1;
+      padding: 12px 24px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      font-size: 14px;
+      z-index: 1000;
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+    }
+    .print-btn {
+      background: #0f172a;
+      color: #ffffff;
+      border: none;
+      padding: 8px 18px;
+      font-weight: 600;
+      border-radius: 6px;
+      cursor: pointer;
+    }
+    .print-btn:hover {
+      background: #334155;
+    }
+
+    /* Cover Page */
+    .cover-page {
+      min-height: 9.5in;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      border: 2px solid #000000;
+      padding: 0.6in;
+      text-align: center;
+      page-break-after: always;
+    }
+    .cover-top h2 {
+      font-size: 16pt;
+      font-weight: bold;
+      text-transform: uppercase;
+      margin-bottom: 6pt;
+    }
+    .cover-top p {
+      font-size: 13pt;
+      font-weight: bold;
+      margin-bottom: 20pt;
+    }
+    .cover-title {
+      margin: 40pt 0;
+    }
+    .cover-title h1 {
+      font-size: 24pt;
+      font-weight: bold;
+      margin-bottom: 12pt;
+      letter-spacing: 0.05em;
+    }
+    .cover-title h3 {
+      font-size: 15pt;
+      font-weight: normal;
+      font-style: italic;
+      line-height: 1.4;
+    }
+    .cover-meta {
+      text-align: left;
+      border: 1px solid #000000;
+      padding: 16pt;
+      margin: 30pt 0;
+      font-size: 11pt;
+    }
+    .cover-meta table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+    .cover-meta td {
+      padding: 4pt 6pt;
+      vertical-align: top;
+      border: none;
+    }
+    .cover-bottom {
+      border-top: 1px solid #000000;
+      padding-top: 12pt;
+      font-size: 11pt;
+    }
+
+    /* Headings */
+    h1.sec-heading {
+      font-size: 16pt; /* Main Headings: 16 pt, Bold */
+      font-weight: bold;
+      margin-top: 24pt;
+      margin-bottom: 12pt;
+      border-bottom: 1.5pt solid #000000;
+      padding-bottom: 4pt;
+      page-break-after: avoid;
+    }
+    h2.sub-heading {
+      font-size: 14pt; /* Subheadings: 14 pt, Bold */
+      font-weight: bold;
+      margin-top: 18pt;
+      margin-bottom: 8pt;
+      page-break-after: avoid;
+    }
+    h3.sub-sub-heading {
+      font-size: 12pt;
+      font-weight: bold;
+      margin-top: 14pt;
+      margin-bottom: 6pt;
+      page-break-after: avoid;
+    }
+
+    p {
+      margin-bottom: 6pt; /* Paragraph Spacing: 6 pt after each paragraph */
+      text-indent: 0;
+    }
+
+    ul, ol {
+      margin-left: 24pt;
+      margin-bottom: 6pt;
+    }
+    li {
+      margin-bottom: 4pt;
+    }
+
+    /* Tables (Rule 4: Captions above the table) */
+    .table-wrapper {
+      margin: 16pt 0;
+      page-break-inside: avoid;
+    }
+    .table-caption {
+      font-size: 11pt;
+      font-weight: bold;
+      margin-bottom: 6pt;
+      text-align: left;
+    }
+    table.doc-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 10.5pt;
+      line-height: 1.35;
+      margin-bottom: 6pt;
+    }
+    table.doc-table th, table.doc-table td {
+      border: 1px solid #000000;
+      padding: 6pt 8pt;
+      text-align: left;
+    }
+    table.doc-table th {
+      background-color: #f2f2f2;
+      font-weight: bold;
+    }
+
+    /* Figures (Rule 3: Captions below the image/figure) */
+    .figure-wrapper {
+      margin: 16pt 0;
+      text-align: center;
+      page-break-inside: avoid;
+    }
+    .figure-box {
+      border: 1px solid #000000;
+      background: #fafafa;
+      padding: 14pt;
+      font-family: "Courier New", Courier, monospace;
+      font-size: 9.5pt;
+      line-height: 1.3;
+      text-align: left;
+      white-space: pre;
+      overflow-x: auto;
+      margin-bottom: 6pt;
+    }
+    .figure-caption {
+      font-size: 10.5pt;
+      font-style: italic;
+      margin-top: 4pt;
+      text-align: center;
+    }
+
+    /* Code & Formulas */
+    .code-box {
+      background: #f8f9fa;
+      border: 1px solid #cccccc;
+      padding: 10pt;
+      font-family: "Courier New", Courier, monospace;
+      font-size: 9.5pt;
+      margin-bottom: 6pt;
+      white-space: pre-wrap;
+    }
+
+    /* Page Break Helper */
+    .page-break {
+      page-break-before: always;
+    }
+
+    @media print {
+      .no-print-toolbar {
+        display: none !important;
+      }
+      .page-container {
+        padding: 0;
+        max-width: 100%;
+      }
+      body {
+        background: #ffffff;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Top Toolbar -->
+  <div class="no-print-toolbar">
+    <div>
+      <strong>CodeForge BuildX 2026 Documentation</strong> — CareerBridge Project Report
+    </div>
+    <button class="print-btn" onclick="window.print()">Print Document / Save as PDF</button>
+  </div>
+
+  <div class="page-container">
+
+    <!-- COVER PAGE -->
+    <div class="cover-page">
+      <div class="cover-top">
+        <h2>CodeForge BuildX 2026</h2>
+        <p>Mini-Project Documentation Report</p>
+      </div>
+
+      <div class="cover-title">
+        <h1>CAREERBRIDGE</h1>
+        <h3>AI-Powered Job Matching Platform for Fresh Graduates</h3>
+      </div>
+
+      <div class="cover-meta">
+        <table>
+          <tr>
+            <td style="width: 32%;"><strong>Project Track:</strong></td>
+            <td>Full-Stack Web Development & Applied AI</td>
+          </tr>
+          <tr>
+            <td><strong>Academic Submission:</strong></td>
+            <td>BuildX 2026 Mandatory 6-Section Technical Documentation</td>
+          </tr>
+          <tr>
+            <td><strong>Core Technologies:</strong></td>
+            <td>React 18, Tailwind CSS, Python Flask, SQLAlchemy, Scikit-learn, pdfplumber</td>
+          </tr>
+          <tr>
+            <td><strong>Submission Date:</strong></td>
+            <td>November 2026</td>
+          </tr>
+        </table>
+      </div>
+
+      <div class="cover-bottom">
+        <p><strong>Department of Computer Science & Engineering</strong></p>
+        <p>Mentor & Faculty Evaluation Hardcopy Review</p>
+      </div>
+    </div>
+
+    <!-- SECTION 1 -->
+    <h1 class="sec-heading">1. Introduction</h1>
+
+    <h2 class="sub-heading">1.1 Project Overview</h2>
+    <p>CareerBridge is an intelligent, full-stack career platform engineered to address the systemic challenges faced by college seniors and fresh university graduates during their transition into the technology industry. Traditional recruitment channels frequently fail entry-level candidates by relying on static keyword indexing, opaque algorithmic filters, and rigid tenure thresholds. CareerBridge solves this by implementing natural language text vectorization, automated layout-aware resume parsing, mathematical skill gap analysis, and tailored learning pathway recommendations.</p>
+
+    <h2 class="sub-heading">1.2 Problem Statement</h2>
+    <p>Contemporary online employment portals (including LinkedIn, Indeed, and corporate recruitment sites) present four foundational hurdles for early-career technologists:</p>
+    <ul>
+      <li><strong>Experience Thresholds:</strong> Positions designated as "entry-level" routinely demand 2–3 years of commercial production experience.</li>
+      <li><strong>Applicant Tracking System (ATS) Disqualification:</strong> Algorithmic keyword scanners disqualify applicants based on phrasing mismatches, disregarding demonstrated project competence and foundational skills.</li>
+      <li><strong>Absence of Remedial Feedback:</strong> Rejected candidates receive binary automated rejections offering zero diagnostic insight into the specific technical gaps that led to disqualification.</li>
+      <li><strong>Fragmented Skill Remediation:</strong> Students lack centralized market intelligence to discern which emerging tools to prioritize and where to locate accredited educational resources.</li>
+    </ul>
+
+    <h2 class="sub-heading">1.3 Project Objectives</h2>
+    <p>The engineering objectives realized in this project are:</p>
+    <ul>
+      <li>To build a modern, responsive Single Page Application (SPA) using React 18 and Tailwind CSS v3 with protected and administrative route guards.</li>
+      <li>To implement an automated PDF resume ingestion pipeline in Python utilizing <code>pdfplumber</code> to extract structured skills across an 88-skill taxonomy.</li>
+      <li>To design a hybrid AI recommendation engine combining Term Frequency-Inverse Document Frequency (TF-IDF) with Cosine Similarity and prerequisite verification.</li>
+      <li>To calculate mathematical skill gaps across target jobs and aggregate market-wide competency deficits using frequency prioritization.</li>
+      <li>To query curated course catalogs (Coursera, Udemy, edX) and provide structured learning pathways matching candidate deficits.</li>
+      <li>To provide an administrative portal for live governance of platform statistics, student applicant records, and job posting lifecycles.</li>
+    </ul>
+
+    <h2 class="sub-heading">1.4 Scope and Target Users</h2>
+    <p>The platform scope encompasses university seniors, recent engineering graduates, recruitment administrators, and campus placement cells. The system automates candidate profile creation, job compatibility discovery, one-click application submission, and skill portfolio updates.</p>
+
+    <!-- SECTION 2 -->
+    <div class="page-break"></div>
+    <h1 class="sec-heading">2. Literature Survey & Requirement Analysis</h1>
+
+    <h2 class="sub-heading">2.1 Existing Systems & Shortcomings</h2>
+    <p>Existing job boards operate primarily via relational database queries (e.g., SQL LIKE pattern matching) or boolean filters. In these legacy architectures, candidates who possess relevant skills but omit specific synonyms or acronyms are routinely discarded. Furthermore, existing portals maintain no diagnostic feedback loop: once an application is submitted, candidates receive no guidance regarding how to close technical deficits.</p>
+
+    <h2 class="sub-heading">2.2 Proposed Solution & Value Addition</h2>
+    <p>CareerBridge formulates candidate profiles and job descriptions as multidimensional semantic vectors. By analyzing term frequencies and document orientation, the platform identifies conceptual alignment even when exact phrasing differs, while simultaneously validating core mandatory prerequisites. Additionally, the system provides transparent skill gap breakdowns and prioritized course recommendations, transforming rejections into structured upskilling opportunities.</p>
+
+    <h2 class="sub-heading">2.3 Hardware & Software Specifications</h2>
+    <p>The operational specifications required to develop, host, and execute the CareerBridge system are delineated in Table 1.</p>
+
+    <div class="table-wrapper">
+      <div class="table-caption">Table 1: Hardware and Software Specifications</div>
+      <table class="doc-table">
+        <thead>
+          <tr>
+            <th style="width: 25%;">Component</th>
+            <th style="width: 37%;">Development Specification</th>
+            <th style="width: 38%;">Deployment / Minimum Requirement</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Operating System</td>
+            <td>Windows 10 / 11, Ubuntu 22.04 LTS</td>
+            <td>Cross-Platform (Linux / Windows / macOS)</td>
+          </tr>
+          <tr>
+            <td>Processor (CPU)</td>
+            <td>Intel Core i5 / AMD Ryzen 5 (4+ Cores)</td>
+            <td>2.0 GHz Dual-Core 64-bit Processor</td>
+          </tr>
+          <tr>
+            <td>Memory (RAM)</td>
+            <td>8 GB / 16 GB DDR4</td>
+            <td>2 GB System Memory Available Minimum</td>
+          </tr>
+          <tr>
+            <td>Storage</td>
+            <td>512 GB SSD Storage</td>
+            <td>1 GB Free Disk Space for Environment & DB</td>
+          </tr>
+          <tr>
+            <td>Frontend Framework</td>
+            <td>React 18.2, Vite 8.3, Tailwind CSS v3</td>
+            <td>Modern Web Browser (Chrome, Edge, Firefox)</td>
+          </tr>
+          <tr>
+            <td>Backend Framework</td>
+            <td>Python 3.10+, Flask 3.1.0 REST API</td>
+            <td>Python 3.8+ Runtime Environment</td>
+          </tr>
+          <tr>
+            <td>Database Engine</td>
+            <td>SQLite 3 (Local) / MySQL 8.0 (Production)</td>
+            <td>SQLAlchemy 2.0 ORM Supported Engine</td>
+          </tr>
+          <tr>
+            <td>Machine Learning</td>
+            <td>Scikit-learn 1.6+, NumPy 2.2+, SciPy</td>
+            <td>Pre-compiled Wheel Binary Environment</td>
+          </tr>
+          <tr>
+            <td>PDF Processing</td>
+            <td>pdfplumber 0.11.5, pdfminer.six</td>
+            <td>Standard Python PDF Stream IO</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h2 class="sub-heading">2.4 Functional Requirements</h2>
+    <p>The functional requirements established for the system include:</p>
+    <ul>
+      <li><strong>FR-01 (Authentication):</strong> Registration, login, and session validation using stateless JWT tokens with role separation (Student vs. Admin).</li>
+      <li><strong>FR-02 (Candidate Profiling):</strong> Management of education history, portfolio projects, and technical skills with proficiency levels.</li>
+      <li><strong>FR-03 (Resume Parsing):</strong> Automated ingestion of PDF resumes, text extraction via <code>pdfplumber</code>, and taxonomy matching.</li>
+      <li><strong>FR-04 (AI Matching):</strong> Calculation of compatibility scores (0–100%) using TF-IDF vectorization and cosine similarity.</li>
+      <li><strong>FR-05 (Skill Gap Analysis):</strong> Mathematical set-difference derivation of missing requirements for targeted jobs and market-wide demands.</li>
+      <li><strong>FR-06 (Course Recommendations):</strong> Dynamic mapping of candidate skill gaps to curated courses sorted by frequency and rating.</li>
+      <li><strong>FR-07 (Application Pipeline):</strong> Submission of job applications and tracking through status stages (Applied, Reviewed, Interview, Offered).</li>
+      <li><strong>FR-08 (Admin Governance):</strong> Management of student applicant rosters, job creation/editing, and application status updates.</li>
+    </ul>
+
+    <h2 class="sub-heading">2.5 Non-Functional Requirements</h2>
+    <p>The non-functional specifications enforce sub-second matching latency (< 200 ms), salted cryptographic password security (PBKDF2-SHA256 with 600,000 iterations), responsive viewport design across mobile and desktop devices, and database referential integrity via foreign key cascades.</p>
+
+    <!-- SECTION 3 -->
+    <div class="page-break"></div>
+    <h1 class="sec-heading">3. System Architecture & Design</h1>
+
+    <h2 class="sub-heading">3.1 Overall System Architecture</h2>
+    <p>CareerBridge is organized as a decoupled, multi-tiered architecture comprising a presentation Single Page Application (SPA), a reverse proxy gateway, a Flask RESTful application server, and an AI/ORM persistence tier.</p>
+
+    <div class="figure-wrapper">
+      <div class="figure-box">+-------------------------------------------------------------------------+
+| PRESENTATION TIER: React 18 SPA + Tailwind CSS v3 (Port 5173)           |
+| - Dashboard.jsx  |  Jobs.jsx  |  Profile.jsx  |  SkillAnalysis.jsx       |
+| - Centralized State: AuthContext (JWT)  |  Axios Client & Interceptors   |
++------------------------------------+------------------------------------+
+                                     | HTTP/REST Requests (JSON)
+                                     v
++-------------------------------------------------------------------------+
+| GATEWAY / REVERSE PROXY: Vite Dev Server Proxy (Port 5173 -> 5000)      |
++------------------------------------+------------------------------------+
+                                     | Proxied API Calls (/api/*)
+                                     v
++-------------------------------------------------------------------------+
+| APPLICATION TIER: Python Flask 3.1 RESTful Server (Port 5000)            |
+| - auth_bp  |  student_bp  |  jobs_bp  |  ai_bp  |  admin_bp             |
+| - Security: Flask-JWT-Extended (@jwt_required, @admin_required)          |
++------------------+-------------------+------------------+---------------+
+                   |                   |                  |
+                   v                   v                  v
++----------------------+ +-------------------------+ +--------------------+
+| AI / ML MATCH ENGINE | | RESUME PARSING SERVICE  | | PERSISTENCE LAYER  |
+| - TF-IDF Vectorizer  | | - pdfplumber Text Stream| | - SQLAlchemy ORM   |
+| - Cosine Similarity  | | - 88+ Skill Taxonomy    | | - SQLite / MySQL   |
+| - Skill Gap Analyzer | | - Word-Boundary Regex   | | - Foreign Key Cas. |
++----------------------+ +-------------------------+ +--------------------+</div>
+      <div class="figure-caption">Figure 1: Full-Stack System Architecture of CareerBridge</div>
+    </div>
+
+    <h2 class="sub-heading">3.2 Data Flow Architecture</h2>
+    <p>Client requests are initiated through the centralized Axios client in <code>api.js</code>. The request interceptor dynamically appends the JWT Bearer token from local storage. The Vite proxy forwards requests matching <code>/api/*</code> to Flask on port 5000. Flask validates token signatures, invokes the appropriate service modules (e.g., Scikit-learn or SQLAlchemy), and returns JSON responses.</p>
+
+    <h2 class="sub-heading">3.3 Database & Entity-Relationship Design</h2>
+    <p>The database schema is fully normalized and modeled using SQLAlchemy ORM. Table 2 details the entity schema and relational constraints.</p>
+
+    <div class="table-wrapper">
+      <div class="table-caption">Table 2: Relational Database Schema & Entities</div>
+      <table class="doc-table">
+        <thead>
+          <tr>
+            <th style="width: 22%;">Entity / Table</th>
+            <th style="width: 18%;">Primary Key</th>
+            <th style="width: 28%;">Foreign Key Relationships</th>
+            <th style="width: 32%;">Key Attributes & Constraints</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>users</td>
+            <td>id (INT)</td>
+            <td>None</td>
+            <td>email (unique), password_hash, full_name, role</td>
+          </tr>
+          <tr>
+            <td>student_profiles</td>
+            <td>id (INT)</td>
+            <td>user_id -> users.id (1:1)</td>
+            <td>university, degree, gpa, bio, resume_path</td>
+          </tr>
+          <tr>
+            <td>educations</td>
+            <td>id (INT)</td>
+            <td>profile_id -> profiles.id (M:1)</td>
+            <td>institution, degree, field_of_study, dates, gpa</td>
+          </tr>
+          <tr>
+            <td>projects</td>
+            <td>id (INT)</td>
+            <td>profile_id -> profiles.id (M:1)</td>
+            <td>title, description, technologies, project_url</td>
+          </tr>
+          <tr>
+            <td>skills</td>
+            <td>id (INT)</td>
+            <td>None</td>
+            <td>name (unique index), category (programming, etc.)</td>
+          </tr>
+          <tr>
+            <td>student_skills</td>
+            <td>id (INT)</td>
+            <td>profile_id, skill_id (Junction)</td>
+            <td>proficiency_level (1-5), profile-skill mapping</td>
+          </tr>
+          <tr>
+            <td>jobs</td>
+            <td>id (INT)</td>
+            <td>created_by -> users.id (M:1)</td>
+            <td>title, company, location, job_type, salary_range</td>
+          </tr>
+          <tr>
+            <td>job_skills</td>
+            <td>id (INT)</td>
+            <td>job_id, skill_id (Junction)</td>
+            <td>importance (required/preferred)</td>
+          </tr>
+          <tr>
+            <td>applications</td>
+            <td>id (INT)</td>
+            <td>student_id, job_id (Junction)</td>
+            <td>status (applied, interview, offered), match_score</td>
+          </tr>
+          <tr>
+            <td>courses</td>
+            <td>id (INT)</td>
+            <td>skill_id -> skills.id (M:1)</td>
+            <td>title, provider, url, difficulty, duration, rating</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- SECTION 4 -->
+    <div class="page-break"></div>
+    <h1 class="sec-heading">4. Methodology & Implementation Details</h1>
+
+    <h2 class="sub-heading">4.1 AI Job Recommendation Engine</h2>
+    <p>CareerBridge implements a hybrid scoring pipeline that evaluates both semantic context and explicit skill fulfillment.</p>
+
+    <h3 class="sub-sub-heading">4.1.1 Natural Language Vectorization (TF-IDF)</h3>
+    <p>Candidate skills and synthesized job specifications are transformed into vector spaces using Scikit-learn's <code>TfidfVectorizer</code>. Sublinear term frequency scaling is applied to prevent repetitive keyword stuffing from skewing recommendations:</p>
+    <div class="code-box">TF(t, d)  = 1 + ln(count(t, d))                # Sublinear term frequency
+IDF(t, D) = ln((1 + |D|) / (1 + df(t))) + 1   # Smoothed inverse document frequency
+TF-IDF    = TF(t, d) * IDF(t, D)               # Normalized vector representation</div>
+
+    <h3 class="sub-sub-heading">4.1.2 Multidimensional Cosine Similarity</h3>
+    <p>Cosine similarity calculates the angular orientation of the student term vector <em>u</em> and the job specification vector <em>v</em>:</p>
+    <div class="code-box">Cosine_Similarity(u, v) = (u . v) / (||u||_2 * ||v||_2)
+                        = SUM(u_i * v_i) / [ SQRT(SUM(u_i^2)) * SQRT(SUM(v_i^2)) ]</div>
+
+    <h3 class="sub-sub-heading">4.1.3 Hybrid Scoring Formula</h3>
+    <p>The final compatibility score blends 60% semantic cosine similarity with 40% direct prerequisite skill overlap, yielding a calibrated 0–100% score:</p>
+    <div class="code-box">Direct_Overlap = |Student_Skills INTERSECT Job_Skills| / |Job_Skills|
+Match_Score    = [ 0.60 * Cosine_Similarity + 0.40 * Direct_Overlap ] * 100</div>
+
+    <h2 class="sub-heading">4.2 Automated Resume Parsing & Skill Taxonomy</h2>
+    <p>The resume ingestion pipeline receives uploaded PDF files, validates MIME types, and uses <code>pdfplumber</code> to extract text coordinates. Text streams are scanned against an 88-skill taxonomy using word-boundary regular expressions (<code>\b</code>) to eliminate substring collisions (such as matching "Java" within "JavaScript").</p>
+
+    <div class="figure-wrapper">
+      <div class="figure-box">[PDF File Upload]  --->  [Secure File Sanitization]  --->  [pdfplumber Text Stream]
+                                                                 |
+                                                                 v
+[Candidate Profile Sync]  <---  [Word-Boundary Regex]  <---  [88+ Skill Taxonomy]</div>
+      <div class="figure-caption">Figure 2: Resume Extraction & Taxonomy Matching Pipeline</div>
+    </div>
+
+    <h2 class="sub-heading">4.3 Skill Gap Analysis & Market Demand Aggregation</h2>
+    <p>For an individual job, missing competencies are derived via mathematical set difference: <code>Missing = Required_Job_Skills \ Candidate_Skills</code>. For market-wide prioritization, the backend queries the student's top 10 recommended roles and aggregates missing competencies using Python's <code>collections.Counter</code>, identifying which skills unlock the greatest number of opportunities.</p>
+
+    <h2 class="sub-heading">4.4 Course Recommendation Subsystem</h2>
+    <p>Identified skill deficits are mapped to the <code>courses</code> table via relational joins on skill names. Courses from Coursera, Udemy, and edX are prioritized based on demand frequency, difficulty, and user ratings.</p>
+
+    <h2 class="sub-heading">4.5 Security Architecture & Role-Based Access Control</h2>
+    <p>Authentication utilizes JSON Web Tokens signed with HMAC-SHA256, carrying user IDs and role claims. Passwords are encrypted using salted PBKDF2-SHA256 hashes with 600,000 iterations. Administrative operations are protected via the custom <code>@admin_required</code> decorator, which inspects JWT claims and returns HTTP 403 Forbidden for unauthorized requests.</p>
+
+    <!-- SECTION 5 -->
+    <div class="page-break"></div>
+    <h1 class="sec-heading">5. Testing, Results & Output Analysis</h1>
+
+    <h2 class="sub-heading">5.1 Testing Methodology</h2>
+    <p>The platform was validated through unit testing of mathematical algorithms, integration testing of API blueprints, end-to-end user journey verification, and defensive boundary handling.</p>
+
+    <h2 class="sub-heading">5.2 Test Execution Matrix</h2>
+    <p>Table 3 outlines the formal test execution matrix summarizing test cases, input conditions, and results.</p>
+
+    <div class="table-wrapper">
+      <div class="table-caption">Table 3: Comprehensive Test Case Execution Matrix</div>
+      <table class="doc-table">
+        <thead>
+          <tr>
+            <th style="width: 14%;">Test ID</th>
+            <th style="width: 20%;">Target Module</th>
+            <th style="width: 32%;">Input Condition</th>
+            <th style="width: 24%;">Expected Behavior</th>
+            <th style="width: 10%;">Result</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>TC-01</td>
+            <td>Auth / Login</td>
+            <td>Valid credentials</td>
+            <td>HTTP 200, JWT issued</td>
+            <td>PASSED</td>
+          </tr>
+          <tr>
+            <td>TC-02</td>
+            <td>Auth / Security</td>
+            <td>Invalid password</td>
+            <td>HTTP 401 Unauthorized</td>
+            <td>PASSED</td>
+          </tr>
+          <tr>
+            <td>TC-03</td>
+            <td>Admin Guard</td>
+            <td>Student accesses /admin</td>
+            <td>HTTP 403, redirected</td>
+            <td>PASSED</td>
+          </tr>
+          <tr>
+            <td>TC-04</td>
+            <td>Resume Parser</td>
+            <td>PDF upload with technical skills</td>
+            <td>Text parsed, skills matched</td>
+            <td>PASSED</td>
+          </tr>
+          <tr>
+            <td>TC-05</td>
+            <td>AI Matcher</td>
+            <td>Candidate skills vs. jobs</td>
+            <td>TF-IDF cosine sim & overlap</td>
+            <td>PASSED</td>
+          </tr>
+          <tr>
+            <td>TC-06</td>
+            <td>Skill Gap</td>
+            <td>Job requirements comparison</td>
+            <td>Outputs matched & missing</td>
+            <td>PASSED</td>
+          </tr>
+          <tr>
+            <td>TC-07</td>
+            <td>Job Application</td>
+            <td>Submit job application</td>
+            <td>Record created, status Applied</td>
+            <td>PASSED</td>
+          </tr>
+          <tr>
+            <td>TC-08</td>
+            <td>Duplicate Guard</td>
+            <td>Apply to same job twice</td>
+            <td>HTTP 400 "Already applied"</td>
+            <td>PASSED</td>
+          </tr>
+          <tr>
+            <td>TC-09</td>
+            <td>Admin Jobs</td>
+            <td>Create new job posting</td>
+            <td>Job & JobSkills created in DB</td>
+            <td>PASSED</td>
+          </tr>
+          <tr>
+            <td>TC-10</td>
+            <td>Status Update</td>
+            <td>Admin updates app status</td>
+            <td>Status updated in database</td>
+            <td>PASSED</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h2 class="sub-heading">5.3 System Screen Outputs & Verification Walkthrough</h2>
+    <p>The platform delivers all functional views without runtime exceptions:</p>
+    <ul>
+      <li><strong>Student Dashboard View:</strong> Renders high-level summary statistics (Applications Sent, AI Jobs Matched, Average Compatibility Score, Skills Profiled), top AI-ranked recommendations, and domain competency distribution.</li>
+      <li><strong>Job Discovery & Details Modal:</strong> Renders 15 industry job postings with filters. Clicking a role opens a modal detailing role responsibilities, qualifications, and an AI Compatibility Breakdown (Skills Matched vs. Skills Missing).</li>
+      <li><strong>Skill Gap & Learning Pathways View:</strong> Renders an interactive Competency Radar Chart benchmarked against junior industry standards across 6 engineering domains, alongside prioritized in-demand missing competencies and targeted course cards.</li>
+      <li><strong>Application Pipeline Tracker:</strong> Displays submission histories grouped by status pills (Applied, Reviewed, Interview, Offered, Rejected) with real-time match score tags.</li>
+      <li><strong>Admin Management Portal:</strong> Equips platform administrators with high-level platform statistics, a searchable student directory, a job creation/editing modal, and dropdown applicant status update controls.</li>
+    </ul>
+
+    <!-- SECTION 6 -->
+    <div class="page-break"></div>
+    <h1 class="sec-heading">6. Conclusion & Future Scope</h1>
+
+    <h2 class="sub-heading">6.1 Project Summary & Accomplishments</h2>
+    <p>CareerBridge successfully demonstrates the practical application of Natural Language Processing and modern full-stack software engineering to address the fresh graduate employment dilemma. By harmonizing automated resume parsing, hybrid TF-IDF cosine similarity scoring, interactive skill gap analysis, and curated course recommendations, the platform replaces opaque recruitment filters with transparent, data-driven career pathways.</p>
+
+    <h2 class="sub-heading">6.2 Key Technical Learnings</h2>
+    <p>The project reinforced critical software engineering lessons: the necessity of hybrid scoring (combining statistical text similarity with strict prerequisite verification), defensive frontend property handling to prevent React rendering crashes, and normalized relational junction tables for flexible many-to-many entity mappings.</p>
+
+    <h2 class="sub-heading">6.3 Future Scope & Enhancements</h2>
+    <p>Future iterations of the platform can expand upon these foundational capabilities:</p>
+    <ul>
+      <li><strong>Deep Transformer Embeddings:</strong> Integrating Sentence-BERT or fine-tuned domain LLMs to capture deeper semantic relationships across nuanced project descriptions.</li>
+      <li><strong>AI Mock Interviewer:</strong> Embedding a real-time conversational AI assistant that conducts simulated technical and behavioral interviews tailored to the specific target role.</li>
+      <li><strong>Automated LinkedIn Ingestion:</strong> Enabling direct profile imports via OAuth 2.0 social integrations to supplement uploaded PDF resumes.</li>
+      <li><strong>Employer Recruitment Portal:</strong> Expanding the administrative interface into a multi-tenant corporate portal where verified enterprise employers can directly search and message high-matching candidates.</li>
+    </ul>
+
+    <h2 class="sub-heading">6.4 References & Bibliography</h2>
+    <p>[1] Salton, G., & Buckley, C. (1988). "Term-weighting approaches in automatic text retrieval." <em>Information Processing & Management</em>, 24(5), 513-523.<br>
+    [2] Pedregosa, F., et al. (2011). "Scikit-learn: Machine Learning in Python." <em>Journal of Machine Learning Research</em>, 12, 2825-2830.<br>
+    [3] Grinberg, M. (2018). <em>Flask Web Development: Developing Web Applications with Python</em>. O'Reilly Media.<br>
+    [4] Banks, A., & Porcello, E. (2020). <em>Learning React: Modern Patterns for Developing React Apps</em>. O'Reilly Media.</p>
+
+  </div>
+
+</body>
+</html>
